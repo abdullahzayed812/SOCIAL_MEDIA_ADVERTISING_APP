@@ -1,15 +1,12 @@
-
-import  { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { Drawer } from "flowbite-react";
 import { useState } from "react";
-import { CustomizerContext } from "../../../../context/CustomizerContext";
-
+import { useCustomizedContext } from "../../context/customized/context";
 
 export const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
-  const { activeDir } = useContext(CustomizerContext);
+  const { activeDir } = useCustomizedContext();
   return (
     <div>
       <div className="flex items-center justify-center">
@@ -25,8 +22,12 @@ export const Cart = () => {
           </span>
         </div>
       </div>
-      <Drawer open={isOpen} onClose={handleClose} position={`${activeDir === "rtl" ? 'left' : 'right'}`} className="dark:bg-darkgray max-w-[350px] w-full">
-
+      <Drawer
+        open={isOpen}
+        onClose={handleClose}
+        position={`${activeDir === "RTL" ? "left" : "right"}`}
+        className="dark:bg-darkgray max-w-[350px] w-full"
+      >
         <div className="border-ld  border-b">
           <div className="flex justify-between items-center p-4">
             <h5 className="text-xl">Shopping Cart</h5>

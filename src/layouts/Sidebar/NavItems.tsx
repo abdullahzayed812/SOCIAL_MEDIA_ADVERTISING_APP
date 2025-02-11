@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { ChildItem } from "./SidebarItemsData";
 import { Sidebar } from "flowbite-react";
 import { Icon } from "@iconify/react";
 import { Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
-import { DashboardContext } from "src/context/DashboardContext/DashboardContext";
+import { useDashboardContext } from "../../context/dashboard/context";
 
 interface NavItemsProps {
   item: ChildItem;
@@ -16,7 +16,7 @@ export const NavItems: React.FC<NavItemsProps> = ({ item }) => {
   const pathname = location.pathname;
   const { t } = useTranslation();
 
-  const { setIsMobileSidebarOpen } = useContext(DashboardContext);
+  const { setIsMobileSidebarOpen } = useDashboardContext();
   return (
     <>
       <Sidebar.Item

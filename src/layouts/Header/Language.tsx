@@ -1,13 +1,11 @@
-
-import { useContext, useEffect } from "react";
-import { useTranslation } from 'react-i18next'
+// import { useEffect } from "react";
+// import { useTranslation } from "react-i18next";
 import { Dropdown } from "flowbite-react";
-import { CustomizerContext } from "src/context/CustomizerContext";
-import engFlag from "/src/assets/images/flag/icon-flag-en.svg"
-import cnFlag from "/src/assets/images/flag/icon-flag-cn.svg"
-import frFlag from "/src/assets/images/flag/icon-flag-fr.svg"
-import saFlag from "/src/assets/images/flag/icon-flag-sa.svg"
-
+import engFlag from "/src/assets/icon-flag-en.svg";
+import cnFlag from "/src/assets/icon-flag-cn.svg";
+import frFlag from "/src/assets/icon-flag-fr.svg";
+import saFlag from "/src/assets/icon-flag-sa.svg";
+import { useCustomizedContext } from "../../context/customized/context";
 
 const Languages = [
   {
@@ -34,21 +32,18 @@ const Languages = [
 ];
 
 export const Language = () => {
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
 
-  const {
-    isLanguage, setIsLanguage
-  } = useContext(CustomizerContext);
-  const currentLang =
-    Languages.find((_lang) => _lang.value === isLanguage) || Languages[1];
+  const { isLanguage, setIsLanguage } = useCustomizedContext();
+  const currentLang = Languages.find((_lang) => _lang.value === isLanguage) || Languages[1];
 
-  useEffect(() => {
-    i18n.changeLanguage(isLanguage);
-  }, [isLanguage]);
+  // useEffect(() => {
+  //   i18n?.changeLanguage(isLanguage);
+  // }, [isLanguage]);
 
   return (
     <>
-     <div className="relative group/menu">
+      <div className="relative group/menu">
         <Dropdown
           label=""
           className="w-56  rounded-sm"
@@ -71,13 +66,7 @@ export const Language = () => {
               key={index}
               onClick={() => setIsLanguage(item.value)}
             >
-              <img
-                src={item.icon}
-                alt="flag"
-                height={24}
-                width={24}
-                className="rounded-full object-cover h-6 w-6"
-              />
+              <img src={item.icon} alt="flag" height={24} width={24} className="rounded-full object-cover h-6 w-6" />
               <span>{item.flagname}</span>
             </Dropdown.Item>
           ))}
@@ -86,4 +75,3 @@ export const Language = () => {
     </>
   );
 };
-

@@ -3,7 +3,8 @@ import { Badge, Dropdown } from "flowbite-react";
 import * as profileData from "./Data";
 import SimpleBar from "simplebar-react";
 import { Link } from "react-router";
-import profileImg from "/src/assets/images/profile/user-1.jpg"
+import profileImg from "/src/assets/react.svg";
+
 const Profile = () => {
   return (
     <div className="relative ">
@@ -14,13 +15,7 @@ const Profile = () => {
         renderTrigger={() => (
           <div className="flex items-center gap-1">
             <span className="h-10 w-10 hover:text-primary rounded-full flex justify-center items-center cursor-pointer group-hover/menu:bg-lightprimary group-hover/menu:text-primary">
-              <img
-                src={profileImg}
-                alt="logo"
-                height="35"
-                width="35"
-                className="rounded-full"
-              />
+              <img src={profileImg} alt="logo" height="35" width="35" className="rounded-full" />
             </span>
             <Icon
               icon="solar:alt-arrow-down-bold"
@@ -32,13 +27,7 @@ const Profile = () => {
       >
         <div className="px-6">
           <div className="flex items-center gap-6 pb-5 border-b dark:border-darkborder mt-5 mb-3">
-            <img
-              src={profileImg}
-              alt="logo"
-              height="56"
-              width="56"
-              className="rounded-full"
-            />
+            <img src={profileImg} alt="logo" height="56" width="56" className="rounded-full" />
             <div>
               <h5 className="text-15 font-semibold">
                 David McMichael <span className="text-success">Pro</span>
@@ -58,12 +47,8 @@ const Profile = () => {
               >
                 <div className="flex items-center w-full ">
                   <div className=" flex gap-3 w-full ">
-                    <h5 className="text-15 font-normal group-hover/link:text-primary">
-                      {items.title}
-                    </h5>
-                    {items.url == "/apps/invoice" ? (
-                      <Badge color={"lightprimary"}>4</Badge>
-                    ) : null}
+                    <h5 className="text-15 font-normal group-hover/link:text-primary">{items.title}</h5>
+                    {items.url == "/apps/invoice" ? <Badge color={"lightprimary"}>4</Badge> : null}
                   </div>
                 </div>
               </Dropdown.Item>

@@ -1,13 +1,17 @@
 import { Outlet } from "react-router";
 import { useCustomizedContext } from "../../context/customized/context";
 import { SidebarLayout } from "../Sidebar";
+import Header from "../Header";
+import { ScrollToTop } from "../../components/ScrollToTop";
+import { PartialTransitioning } from "../../components/PositionTransition";
+import { Customized } from "../Customized";
 
 export const FullLayout: React.FC = () => {
   const { activeLayout, isLayout } = useCustomizedContext();
 
   return (
     <>
-      <div className="flex w-full min-h-screen dark:bg-darkgray">
+      <div className="flex w-full min-h-screen dark:bg-darkgray ">
         <div className="page-wrapper flex w-full  ">
           {/* Header/sidebar */}
 
@@ -23,7 +27,7 @@ export const FullLayout: React.FC = () => {
             >
               {/* Body Content  */}
               <div
-                className={` ${isLayout == "full" ? "w-full py-30 md:px-30 px-5" : "container mx-auto  py-30"} ${
+                className={` ${isLayout == "FULL" ? "w-full py-30 md:px-30 px-5" : "container mx-auto  py-30"} ${
                   activeLayout == "HORIZONTAL" ? "xl:mt-3" : ""
                 }
               `}
@@ -32,7 +36,7 @@ export const FullLayout: React.FC = () => {
                   <Outlet />
                 </ScrollToTop>
               </div>
-              <Customizer />
+              <Customized />
               <PartialTransitioning />
             </div>
           </div>

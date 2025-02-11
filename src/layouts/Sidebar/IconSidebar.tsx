@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import { Icon } from "@iconify/react";
-import Miniicons from "./MiniSidebar";
 import SimpleBar from "simplebar-react";
 import { Button, HR, Tooltip } from "flowbite-react";
 import { Link } from "react-router";
-import { CustomizerContext } from "src/context/CustomizerContext";
+import { useCustomizedContext } from "../../context/customized/context";
+import { MiniIcons } from "./MiniIcons";
 
 export const IconSidebar = () => {
-  const { selectedIconId, setSelectedIconId, setIsCollapse, isCollapse } = useContext(CustomizerContext) || {};
+  const { selectedIconId, setSelectedIconId, setIsCollapse, isCollapse } = useCustomizedContext();
 
   // Handle icon click
   const handleClick = (id: any) => {
@@ -38,7 +37,7 @@ export const IconSidebar = () => {
           </Link>
         </div>
         <SimpleBar className="miniicons ">
-          {Miniicons.map((links, index) => (
+          {MiniIcons.map((links, index) => (
             <Tooltip key={links.id} content={links.tooltip} placement="right" className="flowbite-tooltip">
               <Button
                 key={index}
@@ -53,7 +52,7 @@ export const IconSidebar = () => {
                 <Icon icon={links.icon} height={24} className="dark:bg-blue " />
               </Button>
 
-              {index > 0 && (index + 1) % 3 === 0 && index + 1 !== Miniicons.length && <HR className="my-3"></HR>}
+              {index > 0 && (index + 1) % 3 === 0 && index + 1 !== MiniIcons.length && <HR className="my-3"></HR>}
             </Tooltip>
           ))}
         </SimpleBar>

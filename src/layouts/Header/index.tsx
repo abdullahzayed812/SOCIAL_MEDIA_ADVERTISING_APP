@@ -1,18 +1,15 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "flowbite-react";
 import Search from "./Search";
 import { Icon } from "@iconify/react";
 import AppLinks from "./AppLinks";
 import Notifications from "./Notifications";
 import Profile from "./Profile";
-import FullLogo from "../../shared/logo/FullLogo";
-import MobileHeaderItems from "./MobileHeaderItems";
 import { Drawer } from "flowbite-react";
-import MobileSidebar from "../sidebar/MobileSidebar";
-import HorizontalMenu from "../../horizontal/header/HorizontalMenu";
-import { CustomizerContext } from "../../../../context/CustomizerContext";
 import { Language } from "./Language";
-import { DashboardContext } from "src/context/DashboardContext/DashboardContext";
+import { useCustomizedContext } from "../../context/customized/context";
+import { useDashboardContext } from "../../context/dashboard/context";
+import { MobileHeaderItems } from "./MobileHeaderItems";
 
 interface HeaderPropsType {
   layoutType: string;
@@ -37,9 +34,9 @@ const Header = ({ layoutType }: HeaderPropsType) => {
     };
   }, []);
 
-  const { isLayout, activeMode, setActiveMode } = useContext(CustomizerContext);
+  const { isLayout, activeMode, setActiveMode } = useCustomizedContext();
 
-  const { isMobileSidebarOpen, setIsMobileSidebarOpen } = useContext(DashboardContext);
+  const { isMobileSidebarOpen, setIsMobileSidebarOpen } = useDashboardContext();
 
   const [mobileMenu, setMobileMenu] = useState("");
 
@@ -52,7 +49,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
   };
 
   const toggleMode = () => {
-    setActiveMode((prevMode: string) => (prevMode === "light" ? "dark" : "light"));
+    setActiveMode(activeMode === "LIGHT" ? "DARK" : "LIGHT");
   };
 
   // mobile-sidebar
@@ -64,7 +61,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
           fluid
           className={`rounded-none bg-transparent dark:bg-transparent py-4 sm:px-[15px] px-2 ${
             layoutType == "horizontal" ? "container mx-auto !px-6" : ""
-          }  ${isLayout == "full" ? "!max-w-full " : ""}`}
+          }  ${isLayout == "FULL" ? "!max-w-full " : ""}`}
         >
           {/* Mobile Toggle Icon */}
           <span
@@ -76,11 +73,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
           {/* Toggle Icon   */}
           <Navbar.Collapse className="xl:block ">
             <div className="flex gap-3 items-center relative">
-              {layoutType == "horizontal" ? (
-                <div className="me-3">
-                  <FullLogo />
-                </div>
-              ) : null}
+              {layoutType == "horizontal" ? <div className="me-3">{/* <FullLogo /> */}</div> : null}
 
               {/* App Link Dropwown   */}
 
@@ -90,9 +83,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
           </Navbar.Collapse>
 
           {/* mobile-logo */}
-          <div className="block xl:hidden">
-            <FullLogo />
-          </div>
+          <div className="block xl:hidden">{/* <FullLogo /> */}</div>
 
           <Navbar.Collapse className="xl:block hidden">
             <div className="flex gap-3 items-center">
@@ -101,7 +92,7 @@ const Header = ({ layoutType }: HeaderPropsType) => {
               {/* Theme Toggle */}
 
               {/* Light Mode Button */}
-              {activeMode === "light" ? (
+              {activeMode === "LIGHT" ? (
                 <div
                   className="h-10 w-10 hover:text-primary hover:bg-lightprimary dark:hover:bg-darkminisidebar  dark:hover:text-primary focus:ring-0 rounded-full flex justify-center items-center cursor-pointer text-darklink  dark:text-white"
                   onClick={toggleMode}
@@ -147,18 +138,14 @@ const Header = ({ layoutType }: HeaderPropsType) => {
         {/* Horizontal Menu  */}
         {layoutType == "horizontal" ? (
           <div className="xl:border-t xl:border-ld">
-            <div className={`${isLayout == "full" ? "w-full px-6" : "container"}`}>
-              <HorizontalMenu />
-            </div>
+            <div className={`${isLayout == "FULL" ? "w-full px-6" : "container"}`}>{/* <HorizontalMenu /> */}</div>
           </div>
         ) : null}
       </header>
 
       {/* Mobile Sidebar */}
       <Drawer open={isMobileSidebarOpen} onClose={handleClose} className="w-130">
-        <Drawer.Items>
-          <MobileSidebar />
-        </Drawer.Items>
+        <Drawer.Items>{/* <MobileSidebar /> */}</Drawer.Items>
       </Drawer>
     </>
   );

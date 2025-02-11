@@ -21,10 +21,7 @@ export interface MenuItem {
 
 import { uniqueId } from "lodash";
 
-
-const SidebarContent: MenuItem[] = [
-  
-
+export const SidebarContent: MenuItem[] = [
   {
     id: 1,
     name: "Dashboard",
@@ -531,7 +528,7 @@ const SidebarContent: MenuItem[] = [
         ],
       },
     ],
-  }, 
+  },
   {
     id: 4,
     name: "Tables",
@@ -1027,5 +1024,3 @@ const SidebarContent: MenuItem[] = [
     ],
   },
 ];
-
-export default SidebarContent;

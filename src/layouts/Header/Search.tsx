@@ -1,6 +1,5 @@
-
 import { Modal, TextInput } from "flowbite-react";
-import  { useState } from "react";
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import * as SearchData from "./Data";
 import SimpleBar from "simplebar-react";
@@ -22,17 +21,13 @@ const Search = () => {
         <div className="p-6 border-b border-ld">
           <TextInput placeholder="Search here" className="form-control" sizing="md" required />
         </div>
-        <Modal.Body className="pt-0 "  >
+        <Modal.Body className="pt-0 ">
           <SimpleBar className="max-h-72">
             <h5 className="text-lg pt-5">Quick Page Links</h5>
             {SearchData.SearchLinks.map((links, index) => (
               <Link to={links.href} className="py-1 px-3  group relative" key={index}>
-                <h6 className="group-hover:text-primary mb-1 font-medium text-sm">
-                  {links.title}
-                </h6>
-                <p className="text-xs text-bodytext">
-                  {links.href}
-                </p>
+                <h6 className="group-hover:text-primary mb-1 font-medium text-sm">{links.title}</h6>
+                <p className="text-xs text-bodytext">{links.href}</p>
               </Link>
             ))}
           </SimpleBar>

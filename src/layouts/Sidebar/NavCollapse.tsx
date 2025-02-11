@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { ChildItem } from "../Sidebar/SidebarItemsData";
-import { NavItems } from "../NavItems";
+import { NavItems } from "./NavItems";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { CustomCollapse } from "../CustomCollapse";
 import React from "react";
+import { CustomCollapse } from "./CustomCollapse";
 
 interface NavCollapseProps {
   item: ChildItem;
 }
 
-const NavCollapse: React.FC<NavCollapseProps> = ({ item }: any) => {
+export const NavCollapse: React.FC<NavCollapseProps> = ({ item }: any) => {
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -43,6 +43,7 @@ const NavCollapse: React.FC<NavCollapseProps> = ({ item }: any) => {
       onClick={handleToggle}
       icon={item.icon}
       className={
+        // eslint-disable-next-line no-extra-boolean-cast
         Boolean(activeDD)
           ? "!text-white bg-primary rounded-xl hover:bg-primary hover:text-white shadow-btnshdw"
           : "rounded-xl dark:text-white/80 hover:text-primary"
@@ -65,5 +66,3 @@ const NavCollapse: React.FC<NavCollapseProps> = ({ item }: any) => {
     </CustomCollapse>
   );
 };
-
-export default NavCollapse;

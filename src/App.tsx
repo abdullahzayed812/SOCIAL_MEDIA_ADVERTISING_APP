@@ -1,22 +1,19 @@
 import { Flowbite, ThemeModeScript } from "flowbite-react";
-// import customTheme from "./utils/theme/custom-theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./views/Home";
-import { FullLayout } from "./layouts/Full";
+import { FullLayout } from "./layouts/FullLayout";
 
 function App() {
   return (
     <>
       <ThemeModeScript />
-      <Flowbite /*theme={{ theme: customTheme }}*/>
+      <Flowbite>
         <BrowserRouter>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<FullLayout />}>
-                <Route path="home" element={<Home />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<FullLayout />}>
+              <Route path="home" element={<Home />} />
+            </Route>
+          </Routes>
         </BrowserRouter>
       </Flowbite>
     </>

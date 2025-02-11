@@ -1,17 +1,17 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Sidebar } from "flowbite-react";
 import { IconSidebar } from "./IconSidebar";
 import { SidebarContent } from "./SidebarItemsData";
 import { NavItems } from "./NavItems";
 import { NavCollapse } from "./NavCollapse";
-import { SimpleBar } from "simplebar-react";
-import { CustomizerContext } from "../../../../context/CustomizerContext";
 import { useLocation } from "react-router";
-import { FullLogo } from "../../shared/logo/FullLogo";
+// import { FullLogo } from "../../shared/logo/FullLogo";
+import { useCustomizedContext } from "../../context/customized/context";
+import SimpleBar from "simplebar-react";
 
 export const SidebarLayout = () => {
-  const { selectedIconId, setSelectedIconId } = useContext(CustomizerContext) || {};
+  const { selectedIconId, setSelectedIconId } = useCustomizedContext();
   const selectedContent = SidebarContent.find((data) => data.id === selectedIconId);
 
   const location = useLocation();
@@ -54,9 +54,7 @@ export const SidebarLayout = () => {
           className="fixed menu-sidebar  bg-white dark:bg-darkgray rtl:pe-4 rtl:ps-0 "
           aria-label="Sidebar with multi-level dropdown example"
         >
-          <div className="px-6 py-4 flex items-center sidebarlogo">
-            <FullLogo />
-          </div>
+          <div className="px-6 py-4 flex items-center sidebarlogo">{/* <FullLogo /> */}</div>
           <SimpleBar className="h-[calc(100vh_-_85px)]">
             <Sidebar.Items className="pe-4 rtl:pe-0 rtl:ps-4 px-5 mt-2">
               <Sidebar.ItemGroup className="sidebar-nav hide-menu">

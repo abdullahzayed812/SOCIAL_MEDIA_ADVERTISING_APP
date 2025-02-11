@@ -1,19 +1,19 @@
-
 import { Icon } from "@iconify/react";
 
-import  { useState } from "react";
+import { useState } from "react";
 import * as AppsData from "./Data";
 import { Drawer } from "flowbite-react";
 import SimpleBar from "simplebar-react";
-import MegamenuImg from "/src/assets/images/backgrounds/mega-dd-bg.jpg";
+import MegamenuImg from "/src/assets/react.svg";
 import { Link } from "react-router";
+
 const AppLinks = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
 
   return (
     <>
-      <div className="relative group ">
+      <div className="relative group">
         <span className="h-10 w-10 text-darklink  dark:text-white text-sm hover:text-primary  hover:bg-lightprimary dark:hover:text-primary dark:hover:bg-darkminisidebar  rounded-full flex justify-center items-center cursor-pointer group-hover:bg-lightprimary group-hover:text-primary xl:flex hidden">
           <Icon icon="solar:widget-3-line-duotone" height={20} />
         </span>
@@ -37,30 +37,14 @@ const AppLinks = () => {
                 <div className="xl:col-span-8 col-span-12 flex items-stretch p-6">
                   <div className="grid grid-cols-12 gap-3 w-full">
                     {AppsData.appsLink.map((links, index) => (
-                      <div
-                        className="col-span-12 xl:col-span-6 "
-                        key={index}
-                      >
-                        <Link
-                          to={links.href}
-                          className="flex gap-3 hover:text-primary group relative items-center"
-                        >
-                          <span
-                            className={`h-12 w-12 flex justify-center items-center rounded-tw ${links.iconbg}`}
-                          >
-                            <Icon
-                              icon={links.icon}
-                              height={24}
-                              className={`${links.iconcolor}`}
-                            />
+                      <div className="col-span-12 xl:col-span-6 " key={index}>
+                        <Link to={links.href} className="flex gap-3 hover:text-primary group relative items-center">
+                          <span className={`h-12 w-12 flex justify-center items-center rounded-tw ${links.iconbg}`}>
+                            <Icon icon={links.icon} height={24} className={`${links.iconcolor}`} />
                           </span>
                           <div>
-                            <h6 className="font-semibold text-15 text-ld hover:text-primary ">
-                              {links.title}
-                            </h6>
-                            <p className="text-13 text-bodytext">
-                              {links.subtext}
-                            </p>
+                            <h6 className="font-semibold text-15 text-ld hover:text-primary ">{links.title}</h6>
+                            <p className="text-13 text-bodytext">{links.subtext}</p>
                           </div>
                         </Link>
                       </div>
@@ -68,11 +52,7 @@ const AppLinks = () => {
                   </div>
                 </div>
                 <div className="xl:col-span-4 col-span-12  flex items-strech h-[300px] lg:block hidden">
-                  <img
-                    src={MegamenuImg}
-                    alt="image"
-                    className="h-full w-full"
-                  />
+                  <img src={MegamenuImg} alt="image" className="h-full w-full" />
                 </div>
               </div>
             </SimpleBar>
